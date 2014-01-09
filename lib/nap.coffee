@@ -466,7 +466,7 @@ expandAssetGlobs = =>
     for pkg, patterns of @originalAssets[key]
       matches = []
       for pattern in patterns
-        dirs = glob.sync path.resolve("#{appDir}/#{pattern}").replace(/\\/g, "\/")
+        dirs = glob.sync path.resolve(appDir, pattern).replace(/\\/g, "\/")
         matches = matches.concat(dirs)
       matches = _.uniq _.flatten matches
       matches = (file.replace(appDir, '').replace(/^\//, '') for file in matches)
